@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WellWise – Smart Nutrition & Wellness Tracker</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:20px;
+    background: linear-gradient(135deg, #008080, #20c997);
+}
+h1{
+    text-align:center;
+    color:#ffffff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+.logo h1{ font-size:38px; }
+.logo p{ font-size:16px; color:#e0f7f1; }
+
+.dashboard-imgs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+}
+.dashboard-imgs img{
+    width:120px;
+    height:80px;
+    border-radius:12px;
+    object-fit:cover;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+.section{
+    background:white;
+    padding:15px;
+    margin:20px auto;
+    max-width:750px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+img{
+    width:100%;
+    border-radius:10px;
+    margin:10px 0;
+}
+button{
+    background:#008080;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}
+input{
+    width:95%;
+    padding:7px;
+    margin:5px 0;
+}
+.chatbox{
+    background:#f1f8f4;
+    padding:10px;
+    height:130px;
+    overflow-y:auto;
+    border-radius:6px;
+}
+footer{
+    text-align:center;
+    font-size:12px;
+    margin-top:20px;
+    color:#fff;
+}
+a{ color:#006666; font-weight:bold; }
+progress{ width:100%; height:18px; }
+audio{ width:100%; margin-top:5px; }
+</style>
+</head>
+
+<body>
+
+<!-- Logo -->
+<div class="logo">
+  <h1>🌿 WellWise</h1>
+  <p>Smart Nutrition & Wellness Tracker</p>
+</div>
+
+<!-- Dashboard Images -->
+<div class="dashboard-imgs">
+  <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Healthy Food">
+  <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Exercise">
+  <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Yoga">
+  <img src="https://images.pexels.com/photos/3823086/pexels-photo-3823086.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Meditation">
+</div>
+
+<!-- Nutrition -->
+<div class="section">
+<h3>🥗 Nutrition & Calorie Tracker</h3>
+<img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600">
+<input id="meal" placeholder="Enter meal name">
+<input id="calories" placeholder="Enter calories">
+<button onclick="addMeal()">Add Meal</button>
+<p><b>Meals:</b> <span id="mealList">None</span></p>
+<p><b>Total Calories:</b> <span id="totalCalories">0</span> kcal</p>
+<a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank">Healthy Diet – WHO</a>
+</div>
+
+<!-- Steps -->
+<div class="section">
+<h3>👣 Step Counter</h3>
+<img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600">
+<input type="number" id="steps" placeholder="Enter steps walked">
+<button onclick="addSteps()">Add Steps</button>
+<p>Total Steps: <b><span id="stepCount">0</span></b></p>
+<progress id="stepProgress" value="0" max="8000"></progress>
+<p>Goal: 8000 steps/day</p>
+</div>
+
+<!-- Screen Time -->
+<div class="section">
+<h3>📱 Screen Time Tracker</h3>
+<img src="https://images.pexels.com/photos/3394656/pexels-photo-3394656.jpeg?auto=compress&cs=tinysrgb&w=600">
+<input type="number" id="screenTime" placeholder="Hours of screen time">
+<button onclick="checkScreen()">Check</button>
+<p id="screenMsg"></p>
+<a href="https://www.aao.org/eye-health/tips-prevention/screen-use" target="_blank">Eye Care Tips</a>
+</div>
+
+<!-- Sleep -->
+<div class="section">
+<h3>😴 Sleep Tracker</h3>
+<img src="https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg?auto=compress&cs=tinysrgb&w=600">
+<input type="number" id="sleep" placeholder="Hours slept">
+<button onclick="checkSleep()">Log Sleep</button>
+<p id="sleepMsg"></p>
+</div>
+
+<!-- FIXED EXERCISE FRAME -->
+<div class="section">
+<h3>🏃 Exercise, Yoga & Meditation</h3>
+
+<!-- ✅ FIXED IMAGE (Reliable Pexels link) -->
+<img src="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Exercise">
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=IODxDxX7oi4" target="_blank">Walking / Jogging</a></li>
+<li><a href="https://www.youtube.com/watch?v=v7AYKMP6rOE" target="_blank">15-Minute Yoga</a></li>
+<li><a href="https://www.youtube.com/watch?v=inpok4MKVLM" target="_blank">Home Exercises</a></li>
+<li><a href="https://www.youtube.com/watch?v=SEfs5TJZ6Nk" target="_blank">Meditation Guide</a></li>
+</ul>
+
+<audio controls>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+</div>
+
+<!-- Chatbot -->
+<div class="section">
+<h3>🤖 AI Wellness Chatbot</h3>
+<div class="chatbox" id="chat"></div>
+<input id="userMsg" placeholder="Ask about sleep, food, exercise">
+<button onclick="chatBot()">Send</button>
+</div>
+
+<footer>
+⚠ General wellness guidance only. Not a medical diagnosis.
+</footer>
+
+<script>
+let meals=[], totalCalories=0, totalSteps=0;
+
+function addMeal(){
+ let m=meal.value, c=Number(calories.value);
+ if(m && c){
+  meals.push(m); totalCalories+=c;
+  mealList.innerText=meals.join(", ");
+  totalCaloriesSpan=totalCalories;
+  document.getElementById("totalCalories").innerText=totalCalories;
+  meal.value=""; calories.value="";
+ }
+}
+function addSteps(){
+ totalSteps+=Number(steps.value);
+ stepCount.innerText=totalSteps;
+ stepProgress.value=totalSteps;
+}
+function checkScreen(){
+ screenMsg.innerText = screenTime.value>2 ? 
+ "⚠ Reduce screen time" : "👍 Good habit";
+}
+function checkSleep(){
+ sleepMsg.innerText = sleep.value>=8 ? 
+ "🌟 Well rested!" : "⚠ Sleep more";
+}
+function chatBot(){
+ let q=userMsg.value.toLowerCase();
+ let r="Stay active and eat healthy!";
+ if(q.includes("sleep")) r="Sleep 8–9 hours daily.";
+ if(q.includes("exercise")) r="Exercise daily for fitness.";
+ if(q.includes("food")) r="Eat fruits and vegetables.";
+ chat.innerHTML+=`<p><b>You:</b> ${q}</p><p><b>Bot:</b> ${r}</p>`;
+ userMsg.value="";
+}
+</script>
+
+</body>
+</html>
